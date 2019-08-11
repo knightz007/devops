@@ -1,15 +1,15 @@
 
 create-cluster:
-	cd /c/Users/anupk/DevOpsRepo/terraform/dash-terraform/gcloud-infra/dev/k8_cluster;	\
+	cd k8_cluster;	\
 	terraform apply -auto-approve;
 create-helm-rbac: create-cluster
-	cd /c/Users/anupk/DevOpsRepo/terraform/dash-terraform/gcloud-infra/dev/helm_rbac; \
+	cd helm_rbac; \
 	terraform apply -auto-approve
 create-helm-disks:	
-	cd /c/Users/anupk//DevOpsRepo/terraform/dash-terraform/gcloud-infra/dev/helm_tools/helm_tool_disks;\
+	cd helm_tools/helm_tool_disks;\
 	terraform apply
 setup-tools: create-cluster create-helm-rbac
-	cd /c/Users/anupk/DevOpsRepo/terraform/dash-terraform/gcloud-infra/dev/helm_tools;\
+	cd helm_tools;\
 	terraform apply -auto-approve
 update-dns:
 	./updateDns.sh anchore-anchore-engine-api anchore anchore-web.hopto.org
@@ -25,17 +25,17 @@ full-setup: setup-tools update-dns
 	echo "http://grafana-web.hopto.org/"
 
 destroy-apps:
-	cd /c/Users/anupk/DevOpsRepo/terraform/dash-terraform/gcloud-infra/dev/helm_tools;\
+	cd helm_tools;\
 	terraform destroy -auto-approve
 destroy-helm-rbac:
-	cd /c/Users/anupk/DevOpsRepo/terraform/dash-terraform/gcloud-infra/dev/helm_rbac; \
+	cd helm_rbac; \
 	terraform destroy -auto-approve
 # destroy-helm-disks:
-# 	cd /c/Users/anupk//DevOpsRepo/terraform/dash-terraform/gcloud-infra/dev/helm_tools/helm_tool_disks;\
+# 	cd helm_tools/helm_tool_disks;\
 # 	terraform destroy -auto-approve
 destroy-cluster: destroy-apps destroy-helm-rbac
-	cd /c/Users/anupk//DevOpsRepo/terraform/dash-terraform/gcloud-infra/dev/k8_cluster; \
+	cd k8_cluster; \
 	terraform destroy -auto-approve
 # destroy-all: destroy-apps destroy-helm-rbac destroy-helm-disks
-# 	cd /c/Users/anupk//DevOpsRepo/terraform/dash-terraform/gcloud-infra/dev/k8_cluster; \
+# 	cd k8_cluster; \
 # 	terraform destroy -auto-approve
