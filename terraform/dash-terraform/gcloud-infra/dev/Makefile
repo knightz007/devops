@@ -1,15 +1,19 @@
 
 create-cluster:
 	cd k8_cluster;	\
+	terraform init; \
 	terraform apply -auto-approve;
 create-helm-rbac: create-cluster
 	cd helm_rbac; \
+	terraform init; \
 	terraform apply -auto-approve
 create-helm-disks:	
 	cd helm_tools/helm_tool_disks;\
+	terraform init; \
 	terraform apply
 setup-tools: create-cluster create-helm-rbac
 	cd helm_tools;\
+	terraform init; \
 	terraform apply -auto-approve
 update-dns:
 	./updateDns.sh anchore-anchore-engine-api anchore anchore-web.hopto.org
@@ -26,15 +30,18 @@ full-setup: setup-tools update-dns
 
 destroy-apps:
 	cd helm_tools;\
+	terraform init; \
 	terraform destroy -auto-approve
 destroy-helm-rbac:
 	cd helm_rbac; \
+	terraform init; \
 	terraform destroy -auto-approve
 # destroy-helm-disks:
 # 	cd helm_tools/helm_tool_disks;\
 # 	terraform destroy -auto-approve
 destroy-cluster: destroy-apps destroy-helm-rbac
 	cd k8_cluster; \
+	terraform init; \
 	terraform destroy -auto-approve
 # destroy-all: destroy-apps destroy-helm-rbac destroy-helm-disks
 # 	cd k8_cluster; \
