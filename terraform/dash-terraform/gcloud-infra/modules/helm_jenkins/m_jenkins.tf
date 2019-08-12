@@ -110,11 +110,3 @@ resource "kubernetes_cluster_role_binding" "jenkins" {
 
   depends_on = ["kubernetes_namespace.jenkins_namespace_resource"]
 }
-
-
-
-
-
-
-
-
