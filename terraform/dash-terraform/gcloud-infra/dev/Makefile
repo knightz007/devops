@@ -28,6 +28,7 @@ full-setup: setup-tools update-dns
 	echo "http://prometheus-web.hopto.org/"
 	echo "http://grafana-web.hopto.org/"
 
+
 destroy-apps:
 	cd helm_tools;\
 	terraform init; \
