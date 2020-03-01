@@ -5,7 +5,7 @@ variable "project_name" {
 
 variable "provider_region" {
   description = "Region"
-  default     = "us-east1"
+  default     = "us-east1-b"
 }
 
 variable "cluster_name" {

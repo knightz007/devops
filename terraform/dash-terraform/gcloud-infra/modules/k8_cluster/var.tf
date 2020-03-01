@@ -5,7 +5,7 @@ variable "project_name" {
 
 variable "provider_region" {
   description = "Region"
-  default     = "us-east1"
+  default     = "us-east1-b"
 }
 
 variable "provider_zone" {
@@ -20,7 +20,7 @@ variable "cluster_name" {
 
 variable "cluster_location" {
   description = "describe your variable"
-  default     = "us-east1"
+  default     = "us-east1-b"
 }
 
 variable "node_pool_name" {
@@ -30,12 +30,12 @@ variable "node_pool_name" {
 
 variable "node_pool_location" {
   description = "describe your variable"
-  default     = "us-east1"
+  default     = "us-east1-b"
 }
 
 variable "node_pool_node_count" {
   description = "describe your variable"
-  default     = 1
+  default     = 2
 }
 
 variable "node_config_machine_type" {

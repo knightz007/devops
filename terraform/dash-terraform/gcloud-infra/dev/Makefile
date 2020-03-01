@@ -37,13 +37,13 @@ destroy-helm-rbac:
 	cd helm_rbac; \
 	terraform init; \
 	terraform destroy -auto-approve
-# destroy-helm-disks:
-# 	cd helm_tools/helm_tool_disks;\
-# 	terraform destroy -auto-approve
+destroy-helm-disks:
+	cd helm_tools/helm_tool_disks;\
+	terraform destroy -auto-approve
 destroy-cluster: destroy-apps destroy-helm-rbac
 	cd k8_cluster; \
 	terraform init; \
 	terraform destroy -auto-approve
-# destroy-all: destroy-apps destroy-helm-rbac destroy-helm-disks
-# 	cd k8_cluster; \
-# 	terraform destroy -auto-approve
+destroy-all: destroy-apps destroy-helm-rbac destroy-helm-disks
+	cd k8_cluster; \
+	terraform destroy -auto-approve

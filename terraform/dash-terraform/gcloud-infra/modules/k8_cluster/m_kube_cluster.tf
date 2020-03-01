@@ -28,6 +28,7 @@ resource "google_container_node_pool" "devops_kube_nodes" {
   cluster    = "${google_container_cluster.devops_kube.name}"
   node_count = "${var.node_pool_node_count}"
 
+
   node_config {
     preemptible  = true
     machine_type = "${var.node_config_machine_type}"
@@ -40,6 +41,7 @@ resource "google_container_node_pool" "devops_kube_nodes" {
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
+
   }
 }
 

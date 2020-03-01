@@ -10,7 +10,7 @@ variable "provider_region" {
 
 variable "provider_zone" {
   description = "zone"
-  default     = "us-east1-a"
+  default     = "us-east1-b"
 }
 
 variable "cluster_name" {
